@@ -1,0 +1,120 @@
+console.log("JS working")
+
+window.onload = () => {
+const form = document.getElementById('form');
+const firstName = document.getElementById('firstName');
+const lastName  = document.getElementById('lastName');
+const emailId  = document.getElementById('emailId');
+const phoneNumber  = document.getElementById('phoneNumber');
+const streetAddrs1  = document.getElementById('streetAddrs1');
+const streetAddrs2  = document.getElementById('streetAddrs2');
+const aptNum  = document.getElementById('aptNum');
+const zipcode  = document.getElementById('zipcode');
+const comments  = document.getElementById('comments');
+const submitButton = document.getElementById('Submit');
+const resetButton = document.getElementById('Reset');
+const regExName = /\b([A-Z][a-z.]+]*)+/;
+const regExEmail = /^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(northeastern)\.edu$/;
+const regExPhone = /\d{3}-?\d{3}-\d{4}$/;
+
+// if (!firstName || !lastName || !emailId || !phoneNumber || !streetAddrs1 || !aptNum || !zipcode || !comments) {
+//     return;
+// }
+
+
+let isFNameInValid = true, isLNameInValid = true, isEmailInValid = true, isPhoneNumberInValid = true, isAddressInValid = true, isAptNumInValid = true, isZipcodeInValid = true, isCommentsInValid = true;
+const validate = event => {
+    console.log('input');
+    const {id, value, name} = event.target;
+
+const display = (elementName, isInValid) => {
+    if(isInValid) {
+        // You cant access non form element like below error field using name
+        // Hence use the rudimentary way - getElementById or other
+        document.getElementById(`error_${elementName}`).style.display = "block";
+        document.myForm[elementName].style.border = "2px solid red";
+    } else {
+        document.getElementById(`error_${elementName}`).style.display = "none";
+        document.myForm[elementName].style.border = "";
+    }
+}
+
+switch(id) {
+    case "name":
+        if(!value.trim().toLowerCase().match(regExName)) {
+            display(name, true);
+            isNameInValid = true;
+        } else {
+            display(name, false);
+            isNameInValid = false;
+        }
+        break;
+    case "email":
+        if(!value.trim().toLowerCase().match(regExEmail)) {
+            display(name, true);
+            isEmailInValid = true;
+        } else {
+            display(name, false);
+            isEmailInValid = false;
+        }
+        break;
+    case "phoneNumber":
+        if(!value.trim().toLowerCase().match(regExPhone)) {
+            display(name, true);
+            isPhoneNumberInValid = true;
+        } else {
+            display(name, false);
+            isPhoneNumberInValid = false;
+        }
+        break;
+}
+
+const disableSubmitButton = () => {
+    submitButton.disabled = true;
+    submitButton.classList.add("submit-disabled-state");
+};
+const enableSubmitButton = () => {
+    submitButton.disabled = false;
+    submitButton.classList.remove("submit-disabled-state");
+};
+const submitButtonStatus = () => {
+    if (!firstName || !lastName || !emailId || !phoneNumber || !streetAddrs1 || !aptNum || !zipcode || !comments) {
+         
+        enableSubmitButton();
+    }
+    else {
+        disableSubmitButton();
+    }
+};
+
+// var emailField  = document.getElementById("emailId");
+// var emailFieldErrormsg = document.getElementById("emailError");
+// pattern
+// function validateEmail(){
+//     if(!emailField.value.match(/^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)){
+//         emailFieldErrormsg.innerHTML="Please enter a Valid Email";
+//         return false;
+//     }
+//     emailFieldErrormsg.innerHTML="";
+//     return true;
+// }
+submitButtonStatus();  
+
+ // write a function submitted
+ function submitted(e){
+    console.log('submit');
+    // To avoid page refresh
+    e.preventDefault();
+
+    if(!isNameInValid && !isEmailInValid && !isPhoneNumberInValid){
+        alert("Data entered successfully");
+    }
+    else{
+        alert("Please enter valid details")
+    }
+}
+
+document.myForm.addEventListener('input', validate);
+document.myForm.addEventListener('submit', submitted);
+}
+}

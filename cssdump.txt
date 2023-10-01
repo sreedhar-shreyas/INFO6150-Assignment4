@@ -1,0 +1,26 @@
+.validateform input , textarea , select {
+    border-radius: 4px;
+    display: block;
+}
+.validateform input:focus {
+    outline: 0;
+    display: block;
+}
+.validateform.control.sucess input{
+   border-color: green;
+}
+
+.validateform.control.error input{
+    border-color: red;
+ }
+
+ .validateform.control.error input{
+    color: red;
+ }
+
+.forwidth{
+    padding-left: 150px;
+}
+.checkboxes{
+    display: flex;  
+}

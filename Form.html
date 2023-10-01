@@ -1,69 +1,103 @@
 <!doctype html>
 <html lang="en">
  <head>
+	<script src="./script.js"> </script>
   <title>Feedback</title>
-  <style>
-    label {	float: left;
-			width: 150px;}
-      #container{
-          width: 700px;
-          margin: auto;
-          background-color: beige;
-      } 
-      main{
-          padding: 50px;
-      }
-  </style>
+  <link rel="stylesheet" href="./styles.css">
  </head>
  <body>
  <div id="container">
 	 
 	 <main>
-	 <h2>Feeback</h2>
+	 <h2>Feedback</h2>
 	 <h3>Love something? Hate something? Let us know!</h3>
 		 Note : Fields marked with an asterisk(*) are mandatory
 		 <br><br>
-		 <form method="post" novalidate>
+		 
+		 <form method="post" novalidate name="myForm">
 			<label>Title*:</label>
-			<input type="radio" name="title" id="miss" value="miss" required="required"/>Miss
+			<div class="formstyles">
+			<!-- <input type="radio" name="title" id="miss" value="miss" required="required"/>Miss
 			<input type="radio" name="title" id="mr" value="mr" required="required"/>Mr.
 			<input type="radio" name="title" id="mrs" value="mrs" required="required"/>Mrs.
-			<br><br>
+			<br><br> -->
+			<div class="validateform">
 			<label for="firstName">First Name*:</label>
-			<input type="text" name="firstName" id="firstName" placeholder="First Name" />	
-			<br><br>
-			
-
+			<input type="text" name="fname" id="fname" placeholder="First Name"/>	
+			<br>
+			<div id="error_fname" style="display: none; color: red;"> Invalid name, Please enter valid name.</div><br>
+		</div>
+		<!-- <div class="validateform">
 			<label for="lastName">Last Name*:</label>
-			<input type="text" name="lastName" id="lastName" placeholder="Last Name" />
-			<br><br>
-			
-
+			<input type="text" name="lastName" id="lastName" placeholder="Last Name" minlength="1" maxlength="40" />
+			<br><div class="error"></div><br>
+		</div> -->
+		<div class="validateform">
 			<label for="emailId">Email Id*:</label>
-			<input type="text" name="emailId" id="emailId" placeholder="yourname@domain.com" />
-			<br><br>
-			
-
+			<input type="text" name="email" id="email" placeholder="yourname@northeastern.edu"/>
+			<br> <div id="error_email" style=" display: none; color: red;">        Invalid Email, Please enter valid email.</div>
+         
+                <br><br>
+            </div><br>
+		</div>
+		<!-- <div class="validateform">
 			<label for="phoneNumber">Phone Number*:</label>
-			<input type="text" name="phoneNumber" id="phoneNumber" placeholder="xxx-xxx-xxxx" />
-			<br><br>
-			
+			<input type="text" name="phoneNumber" id="phoneNumber" placeholder="xxx-xxx-xxxx" minlength="10" maxlength="10"  />
+			<br><div class="error"></div><br>
+		</div>
+
+		<div class="validateform">
+			<label for="phoneNumber">Address*:</label>
+			<div class="forwidth">
+			<input type="text" name="streetAddrs1" id="streetAddrs1" placeholder="Street Address 1"  minlength="1" maxlength="40" /> 
+			<br><div class="error"></div><br>
+			<input type="text" name="streetAddrs2" id="streetAddrs2" placeholder="Street Address 2" minlength="1" maxlength="40" />
+			<br><div class="error"></div><br>
+			<input type="text" name="aptNum" id="aptNum" placeholder="Apt Number" minlength="1" maxlength="40"  /> 
+			<br><div class="error"></div><br>
+		</div>
+		</div>
+		<div class="validateform">
             <label for="zipcode">ZipCode*:</label>
-			<input type="text" name="zipcode" id="zipcode" placeholder="xxxxxx" />
-			<br><br>
-             
-            <label for="zipcode">How did you hear*:</label>
+			<input type="text" name="zipcode" id="zipcode" placeholder="xxxxxx" minlength="5" maxlength="5" />
+			<br><div class="error"></div><br>
+		</div>
+		<div class="validateform">
+			<label for="classFeedbackHeading">Which Class do you want to give a feedback on?*:</label>
+		<select id="classFeedback" name="classFeedback">
+			<option value="info5100">INFO 5100</option>
+			<option value="info6150">INF0 6150</option>
+			<option value="info7210">INFO 7210</option>
+			<option value="info9999">INFO 9999</option>
+			<option value="encp6666">ENCP 6666</option>
+		  </select>
+
+		  </div>
+<br>
+<br>
+<br>
+		<div class="validateform">
+			<label for="refferalsource">How did you hear*:</label>
+			<div class="checkboxes">
+        
 			<input type='checkbox' name="source" value="facebook" /> Facebook
             <input type='checkbox' name="source" value="google" /> Google
             <input type='checkbox' name="source" value="yelp" /> Yelp 
-			<br><br> 
-             
+			<br><div class="error"></div><br> 
+			</div>
+			<br> <br>
+		</div>
+		<div class="validateform">
 			<label for="comments">Comments*:</label>
-			<textarea name="text" id="comments" placeholder="Your comments" rows="5" cols="25"></textarea>
+			<textarea name="text" id="comments" placeholder="Your comments" rows="5" cols="25" minlength="10" maxlength="100" ></textarea>
 			<br><br>
-			<input type="Submit">
-			<input type="Reset">
+
+			</div> -->
+
+			<input type="Submit" id="Submit">
+			<input type="Reset" id="Reset">
 			<br><br>
+		</div>
 		 </form>
 	 </main>
  </div>
