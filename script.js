@@ -109,6 +109,7 @@ window.onload = () => {
             case "classFeedback":
                 console.log("hahaah");
                 var e = document.getElementById("classFeedback");
+                
                 var strUser = e.options[e.selectedIndex].value;
 
                 var strUser1 = e.options[e.selectedIndex].text;
@@ -122,26 +123,44 @@ window.onload = () => {
                     isFeedbackClassInValid = false;
 
                     if (strUser1 == "INFO 5100") {
-                        alert("INFO 5100 SELECTED")
-                        callinfo();
-
+                        alert("INFO 5100 SELECTED");
+                        var txtdisplay = document.getElementById("classes");
+                        txtdisplay.style.visibility = "visible";
+                     var cl1 = document.getElementById("classes");
+                     cl1.innerHTML = '<input type="checkbox" name="checkprof" id="checkprof1" value="Prof 1" onclick="onPresscheckbox(this)" style="display: inline;"/>Prof 1';
 
                     }
                     if (strUser1 == "INF0 6150") {
                         alert("INFO 6150 SELECTED");
-                        callinfo();
+                        var txtdisplay = document.getElementById("classes");
+                        txtdisplay.style.visibility = "visible";
+                     var cl1 = document.getElementById("classes");
+                     cl1.innerHTML = '<input type="checkbox" name="checkprof" id="checkprof2" value="Prof 2" onclick="onPresscheckbox(this)" style="display: inline;"/>Prof 2';
+
                     }
                     if (strUser1 == "INFO 7210") {
                         alert("info 7210 SELECTED");
-                        callinfo();
+                        var txtdisplay = document.getElementById("classes");
+                        txtdisplay.style.visibility = "visible";
+                     var cl1 = document.getElementById("classes");
+                     cl1.innerHTML = '<input type="checkbox" name="checkprof" id="checkprof1" value="Prof 3" onclick="onPresscheckbox(this)" style="display: inline;"/>Prof 3';
+
                     }
                     if (strUser1 == "INFO 9999") {
                         alert("INFO 9999 SELECTED");
-                        callinfo();
+                        var txtdisplay = document.getElementById("classes");
+                        txtdisplay.style.visibility = "visible";
+                     var cl1 = document.getElementById("classes");
+                     cl1.innerHTML = '<input type="checkbox" name="checkprof" id="checkprof1" value="Prof 4" onclick="onPresscheckbox(this)" style="display: inline;"/>Prof 4';
+
                     }
                     if (strUser1 == "ENCP 6666") {
                         alert("ENCP 6666 SELECTED");
-                        callinfo();
+                        var txtdisplay = document.getElementById("classes");
+                        txtdisplay.style.visibility = "visible";
+                     var cl1 = document.getElementById("classes");
+                     cl1.innerHTML = '<input type="checkbox" name="checkprof" id="checkprof1" value="Prof 5" onclick="onPresscheckbox(this)" style="display: inline;"/>Prof 5';
+
                     }
 
                 }
@@ -170,23 +189,24 @@ window.onload = () => {
 
     }
     console.log(document.getElementById("checkprof1"));
-    function callinfo() {
-
-        alert("info 5100 inside brooo");
-        var txtdisplay = document.getElementById("classes");
+    // function callinfo(usernames) {
+    //     alert("info 5100 inside brooo");
         
-        txtdisplay.style.display = "block";
+       
 
-        var checkbox = document.querySelectorAll(":checked");
-        var checkboxval = checkbox.length;
-        alert("The no of checkbox clicked " + checkboxval);
-        if (checkboxval>1) {
-        onPresscheckbox();
-    }
-    else {
-        alert("No checkbox checked");
-    }
-    }
+    //     var checkbox = document.querySelectorAll(":checked");
+    //     var checkboxval = checkbox.length;
+    //     alert("The no of checkbox clicked " + checkboxval);
+    //     if (checkboxval>1) {
+    //     onPresscheckbox();
+    // }
+    // else {
+    //     alert("No checkbox checked");
+    // }
+    // }
+
+
+
 
 
 
@@ -219,6 +239,12 @@ window.onload = () => {
     }
     function resetted(e){
         document.getElementById("myForm").reset();
+        var txtdisplay = document.getElementById("classes");
+        var txtfield = document.getElementById("thetextfield");
+        
+        txtdisplay.style.display = "none";
+        txtfield.style.display = "none";
+
     }
     // Event Delegation
     // https://javascript.info/event-delegation
@@ -275,7 +301,7 @@ var list13 = [];
             list9[x] = document.getElementById("classFeedback").value;
             list10[x] = document.getElementById("proftext").value;
             list11[x] = trx;
-           list13[x] = sources;
+            list13[x] = sources;
             list12[x] = document.getElementById("comments").value;
             
 
@@ -355,13 +381,13 @@ var list13 = [];
 }
 }
 
-function onPresscheckbox(){
+function onPresscheckbox(checkbox){
     alert("insite checkbox")
-   element = document.getElementById("checkprof1");
+//    element = document.getElementById("checkprof1");
     var text = document.getElementById("thetextfield");
-     if (element.checked == true){
-text.style.display = "block";
+     if (checkbox.checked == true){
+text.style.visibility = "visible";
 } else {
-text.style.display = "none";
+text.style.visibility = "hidden";
 }
 }

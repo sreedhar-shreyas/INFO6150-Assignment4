@@ -65,7 +65,8 @@
 
 				<div class="validateform">
 					<label for="Address">Address*:</label>
-					<div class="forwidth">
+					<!-- <div class="forwidth"> -->
+				
 						<input type="text" name="streetAddrs1" id="streetAddrs1" placeholder="Street Address 1"
 							minlength="1" maxlength="40" />
 						<br />
@@ -73,13 +74,17 @@
 							Invalid Adress No, Please enter valid
 						</div>
 						<br />
+						<label for="Address">Street Address Line 2:</label>
 						<input type="text" name="streetAddrs2" id="streetAddrs2" placeholder="Street Address 2"
 							minlength="1" maxlength="40" />
 						<br />
+				
 						<div class="error_streetAddrs2" style="display: none; color: red">
 							Invalid Apt No, Please enter valid
 						</div>
 						<br />
+						<label for="aptNum">Apt No*:</label>
+
 						<input type="text" name="aptNum" id="aptNum" placeholder="Apt Number" minlength="1"
 							maxlength="40" />
 						<br />
@@ -87,7 +92,7 @@
 							Invalid Apt No, Please enter valid Apt No.
 						</div>
 						<br />
-					</div>
+					<!-- </div> -->
 				</div>
 				<div class="validateform">
 					<label for="zipcode">ZipCode*:</label>
@@ -99,23 +104,36 @@
 					<br />
 				</div>
 				<div class="validateform">
-					<label for="classFeedbackHeading">Which Class do you want to give a feedback on?*:</label>
+					<label for="classFeedbackHeading">Choose a class to give feedback*:</label>
 					<select id="classFeedback" name="classFeedback">
 						<option hidden selected value="selectone">Select One</option>
 						<option  value="info5100">INFO 5100</option>
-
 						<option value="info6150">INF0 6150</option>
 						<option value="info7210">INFO 7210</option>
 						<option value="info9999">INFO 9999</option>
 						<option value="encp6666">ENCP 6666</option>
 					</select>
-					<div id="classes" style="display: none">
-						<input type="checkbox" name="checkprof" id="checkprof1" value="Prof 1" onclick="onPresscheckbox()"/>
-						<label for="checkprof1"> Prof 1</label><br>
+					<div id="error_classFeedback" style="display: none; color: red">
+						Invalid Selection Code, Please Select from the dropdown
+					</div>
+					<br />
+		
+					<div id="classes" style="visibility:hidden">
+					
+						<input type="checkbox" name="checkprof" id="checkprof1" value="Prof 1" onclick="onPresscheckbox()" style="visibility: hidden;"/> Prof 1
+
+						<!-- <input type="checkbox" name="checkprof" id="checkprof2" value="Prof 2" onclick="onPresscheckbox()" style="display: none;"/> Prof 2
+
+						<input type="checkbox" name="checkprof" id="checkprof3" value="Prof 3" onclick="onPresscheckbox()" style="display: none;"/> Prof 3
+
+						<input type="checkbox" name="checkprof" id="checkprof4" value="Prof 4" onclick="onPresscheckbox()" style="display: none;"/> Prof 4
+
+						<input type="checkbox" name="checkprof" id="checkprof5" value="Prof 5" onclick="onPresscheckbox()" style="display: none;"/> Prof 5 -->
 						<!-- <input type="checkbox" name="checkprof" id="checkprof2" value="Prof 2" onclick="onPresscheckbox()"/>
 						<label for="checkprof2"> Prof 2</label><br> -->
+						
 						</div>
-						<div id="thetextfield" style="display: none">
+						<div id="thetextfield" style="visibility: hidden; padding-left: 180px;">
 							<input type="text" name="proftext" id="proftext" placeholder="Give feedback on Prof" />
 
 						</div>
@@ -127,14 +145,16 @@
 					<br />
 					<br />
 					<div class="validateform">
-						<label for="refferalsource">How did you hear*:</label>
+						<label for="refferalsource">How did you hear us?*:</label>
 						<div class="checkboxes">
 							<input type="checkbox" name="source" value="facebook" />
 							Facebook
 							<input type="checkbox" name="source" value="google" /> Google
 							<input type="checkbox" name="source" value="yelp" /> Yelp
 							<br />
-							<div class="error"></div>
+							<div id="error_checkbox" style="display: none; color: red">
+								Invalid. Please Choose one. 
+							</div>
 							<br />
 						</div>
 						<br />
@@ -144,6 +164,9 @@
 						<label for="comments">Comments*:</label>
 						<textarea name="comments" id="comments" placeholder="Your comments" rows="5" cols="25"
 							minlength="10" maxlength="100"></textarea>
+							<div id="error_comments" style="display: none; color: red">
+								Invalid. Please Enter your comments. 
+							</div>
 						<br /><br />
 					</div>
 
@@ -176,8 +199,7 @@
 		  <th>Professor Name</th>
 		  <th>Feedback</th>
 		  <th>Ref Source</th> 
-		  <th>Comments</th>  <th>idkoneore</th>
-
+		  <th>Comments</th> 
 		</tr>
 	</thead>
 	<tbody id="tbl"> </tbody>

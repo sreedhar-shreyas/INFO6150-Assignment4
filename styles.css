@@ -1,6 +1,6 @@
 label {
     float: left;
-    width: 150px;
+    width: 180px;
 }
 
 #container {
@@ -23,3 +23,6 @@ table, th, td {
     border-collapse: collapse;
     padding: 5px;
   }
+.classes{
+    float: right;
+}
