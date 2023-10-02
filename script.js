@@ -1,4 +1,7 @@
 window.onload = () => {
+document.getElementById("Submit").disabled = true;
+document.getElementById("Reset").disabled = true;
+
   const form = document.getElementById("form");
   const regExName = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
   const regExEmail =
@@ -117,7 +120,7 @@ window.onload = () => {
       case "classFeedback":
         console.log("hahaah");
         var e = document.getElementById("classFeedback");
-
+        var txtdisplay = document.getElementById("classes");
         var strUser = e.options[e.selectedIndex].value;
 
         var strUser1 = e.options[e.selectedIndex].text;
@@ -130,7 +133,7 @@ window.onload = () => {
 
           if (strUser1 == "INFO 5100") {
             alert("INFO 5100 SELECTED");
-            var txtdisplay = document.getElementById("classes");
+            
             txtdisplay.style.visibility = "visible";
             var cl1 = document.getElementById("classes");
             cl1.innerHTML =
@@ -138,7 +141,7 @@ window.onload = () => {
           }
           if (strUser1 == "INF0 6150") {
             alert("INFO 6150 SELECTED");
-            var txtdisplay = document.getElementById("classes");
+            // var txtdisplay = document.getElementById("classes");
             txtdisplay.style.visibility = "visible";
             var cl1 = document.getElementById("classes");
             cl1.innerHTML =
@@ -146,7 +149,7 @@ window.onload = () => {
           }
           if (strUser1 == "INFO 7210") {
             alert("info 7210 SELECTED");
-            var txtdisplay = document.getElementById("classes");
+            // var txtdisplay = document.getElementById("classes");
             txtdisplay.style.visibility = "visible";
             var cl1 = document.getElementById("classes");
             cl1.innerHTML =
@@ -154,7 +157,7 @@ window.onload = () => {
           }
           if (strUser1 == "INFO 9999") {
             alert("INFO 9999 SELECTED");
-            var txtdisplay = document.getElementById("classes");
+            // var txtdisplay = document.getElementById("classes");
             txtdisplay.style.visibility = "visible";
             var cl1 = document.getElementById("classes");
             cl1.innerHTML =
@@ -162,14 +165,19 @@ window.onload = () => {
           }
           if (strUser1 == "ENCP 6666") {
             alert("ENCP 6666 SELECTED");
-            var txtdisplay = document.getElementById("classes");
+            // var txtdisplay = document.getElementById("classes");
             txtdisplay.style.visibility = "visible";
             var cl1 = document.getElementById("classes");
             cl1.innerHTML =
               '<input type="checkbox" name="checkprof" id="checkprof5" value="Prof 5" onclick="onPresscheckbox(this)" style="display: inline;"/>Prof 5';
           }
         }
+        
+       
         break;
+     
+
+
       case "source":
         if (!value) {
           display(name, true);
@@ -189,9 +197,10 @@ window.onload = () => {
         }
         break;
     }
-  };
-  console.log(document.getElementById("checkprof1"));
+    document.getElementById("Submit").disabled = false;
+    document.getElementById("Reset").disabled = false;
 
+  };
   // write a function submitted
   function submitted(e) {
     console.log("submit");
@@ -203,18 +212,20 @@ window.onload = () => {
       createTable();
       document.getElementById("myForm").reset();
       document.getElementById("container2").style.visibility="visible";
-
+      document.getElementById("Submit").disabled = true;
+      document.getElementById("Reset").disabled = true;
     } else {
       alert("Please enter valid details");
     }
   }
+  
   function resetted(e) {
     document.getElementById("myForm").reset();
     var txtdisplay = document.getElementById("classes");
     var txtfield = document.getElementById("thetextfield");
 
-    txtdisplay.style.display = "none";
-    txtfield.style.display = "none";
+    txtdisplay.style.visibility = "hidden";
+    txtfield.style.visibility = "hidden";
   }
   // Event Delegation
   // https://javascript.info/event-delegation
@@ -225,83 +236,7 @@ window.onload = () => {
   function createTable() {
     alert("tablebro");
     
-    // var forheading = document.getElementById("container2");
-    // forheading.innerHTML = "";
-    
-    // var table = document.createElement("table");
-    // forheading.appendChild(table);
-    // table.setAttribute("id","tbss");
-
-    var tdCheckBoxNode = document.createElement("thead");
-    // tdCheckBoxNode.innerHTML =
-    //   '<input type="checkbox" onclick="onClickCheckBox(this)" /><br/><br/><img src="./down.png" width="25px" onclick="tableView(this)">';
-  
-    var tableDataStudent = document.createElement("tr");
-    // tableDataStudent.innerHTML = "Student " + (parseInt(lastIndex) + 1);
-  
-//     var th1 = document.createElement("th");
-//     th1.innerHTML = "Title";
-  
-//     var th2 = document.createElement("th");
-//     th2.innerHTML = "Fullname";
-//     var th3 = document.createElement("th");
-//     th3.innerHTML = "Email Id";
-//     var th4 = document.createElement("th");
-//     th4.innerHTML = "PhoneNo";
-//     var th5 = document.createElement("th");
-//     th5.innerHTML = "Address 1";
-//     var th6 = document.createElement("th");
-//     th6.innerHTML = "Address 2";
-//     var th7 = document.createElement("th");
-//     th7.innerHTML = "Apt No";
-//     var th8 = document.createElement("th");
-//     th8.innerHTML = "Zip Code";
-//     var th9 = document.createElement("th");
-//     th9.innerHTML = "Professor Name";
-//     var th10 = document.createElement("th");
-//     th10.innerHTML = "Feedback";
-//     var th11 = document.createElement("th");
-//     th11.innerHTML = "Ref Source";
-//     var th12 = document.createElement("th");
-//     th12.innerHTML = "Comments"
-  
-
-// tableDataStudent.appendChild(th1);
-// tableDataStudent.appendChild(th2);
-// tableDataStudent.appendChild(th3);
-// tableDataStudent.appendChild(th4);
-// tableDataStudent.appendChild(th5);
-// tableDataStudent.appendChild(th6);
-// tableDataStudent.appendChild(th7);
-// tableDataStudent.appendChild(th8);
-// tableDataStudent.appendChild(th9);
-// tableDataStudent.appendChild(th10);
-// tableDataStudent.appendChild(th11);
-// tableDataStudent.appendChild(th12);
-
-// var tb = document.createElement("tbody");
-// tableDataStudent.appendChild(tb);
-// tb.setAttribute("id","tbl");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    var trx = document.getElementById("checkprof1").value;
+    var trx = document.querySelector('input[name="checkprof"]:checked').value;
     var sar = document.querySelector('input[name="title"]:checked').value;
     var sources = document.querySelector('input[name="source"]:checked').value;
     var tblfname = document.getElementById("fname").value;
