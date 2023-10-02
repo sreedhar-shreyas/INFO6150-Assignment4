@@ -13,6 +13,7 @@ label {
     margin: auto;
     background-color: wheat;
     padding: 100px;
+    visibility: hidden;
 }
 main {
     padding: 50px;
