@@ -1,0 +1,364 @@
+
+
+window.onload = () => {
+    const form = document.getElementById('form');
+    const regExName = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+    const regExEmail = /^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(northeastern)\.edu$/;
+    const regExPhone = /\d{3}-?\d{3}-\d{4}$/;
+    const regExAptNo = /^\d+$/;
+
+
+    const display = (elementName, isInValid) => {
+        if (isInValid) {
+            // You cant access non form element like below error field using name
+            // Hence use the rudimentary way - getElementById or other
+            document.getElementById(`error_${elementName}`).style.display = "block";
+            document.myForm[elementName].style.border = "2px solid red";
+        } else {
+            document.getElementById(`error_${elementName}`).style.display = "none";
+            document.myForm[elementName].style.border = "";
+        }
+    }
+
+    let isNameInValid = true, isEmailInValid = true, isPhoneNumberInValid = true; isAddressInValid = true; isAddress2InValid = true; isAptnoInValid = true; isZipCodeInValid = true; isFeedbackClassInValid = true; isRefInValid = true; iscommentsInValid = true;
+    const validate = event => {
+        console.log('input');
+        const { id, value, name, } = event.target;
+
+        switch (id) {
+            case "fname":
+                if (!value.trim().toLowerCase().match(regExName)) {
+                    display(name, true);
+                    isNameInValid = true;
+                } else {
+                    display(name, false);
+                    isNameInValid = false;
+                }
+                break;
+            case "lname":
+                if (!value.trim().toLowerCase().match(regExName)) {
+                    display(name, true);
+                    isNameInValid = true;
+                } else {
+                    display(name, false);
+                    isNameInValid = false;
+                }
+                break;
+            case "email":
+                if (!value.trim().toLowerCase().match(regExEmail)) {
+                    display(name, true);
+                    isEmailInValid = true;
+                } else {
+                    display(name, false);
+                    isEmailInValid = false;
+                }
+                break;
+            case "phoneNumber":
+                if (!value.trim().match(regExPhone)) {
+                    display(name, true);
+                    isPhoneNumberInValid = true;
+                } else {
+                    display(name, false);
+                    isPhoneNumberInValid = false;
+                }
+                break;
+            case "streetAddrs1":
+                if (!value.trim().toLowerCase().match(regExName)) {
+                    display(name, true);
+                    isAddressInValid = true;
+                } else {
+                    display(name, false);
+                    isAddressInValid = false;
+                }
+                break;
+            case "streetAddrs2":
+                if (!value.trim().toLowerCase().match(regExName)) {
+                    display(name, true);
+                    isAddress2InValid = true;
+                } else {
+                    display(name, false);
+                    isAddress2InValid = false;
+                }
+                break;
+            case "aptNum":
+                if (!value.trim().match(regExAptNo)) {
+                    display(name, true);
+                    isAptnoInValid = true;
+                } else {
+                    display(name, false);
+                    isAptnoInValid = false;
+                }
+                break;
+                case "zipcode":
+                    if (!value.trim().match(regExAptNo)) {
+                        display(name, true);
+                        isZipCodeInValid = true;
+                    } else {
+                        display(name, false);
+                        isZipCodeInValid = false;
+                    }
+                    break;
+            case "classFeedback":
+                    console.log("hahaah");
+
+                
+                        
+                    var e = document.getElementById("classFeedback");
+                var strUser = e.options[e.selectedIndex].value;
+
+                var strUser1 = e.options[e.selectedIndex].text;
+                if (!strUser){
+                    display(name, true);
+                    isFeedbackClassInValid = true;
+
+                }
+                else {
+                    display(name, false);
+                isFeedbackClassInValid = false;
+               
+                if(strUser1=="INFO 5100")
+                {
+                    callinfo();
+
+
+                }
+                if(strUser1=="INF0 6150")
+                {
+                    alert("Please select a user");
+                }
+                if(strUser1=="INFO 7210")
+                {
+                    alert("Please select a user");
+                }
+                if(strUser1=="INFO 9999")
+                {
+                    alert("Please select a user");
+                }
+                if(strUser1=="ENCP 6666")
+                {
+                    alert("Please select a user");
+                }
+                
+            }
+                
+                        // if (!value.trim().toLowerCase().match(regExAptNo)) {
+                        //     display(name, true);
+                        //     isZipCodeInValid = true;
+                        // } else {
+                        //     display(name, false);
+                        //     isZipCodeInValid = false;
+                        // }
+                        break;
+                
+        }
+
+        // if (isNameInValid || isEmailInValid || isPhoneNumberInValid) {
+        //     document.myForm.submit.setAttribute('disabled', true);
+        // } else {
+        //     document.myForm.submit.removeAttribute('disabled');
+        // }
+    }
+function callinfo(){
+
+    alert("info 5100 inside brooo");
+}
+//     var form = document.getElementById('classes');
+//     checkBox = document.createElement('input');
+//     checkBox.type = "checkbox";
+//     checkBox.name = "checkboxname";
+//     checkBox.value = "checkboxnames";
+//     checkBox.id = "checkboxname";
+
+//     checkBox.setAttribute("onclick","valid;");
+//     checkBox.onclick = "onClickCheckBox(this)"
+//     form.appendChild(checkBox)
+//     alert('now lcick')
+
+//     var form = document.getElementById('classes');
+//     form2 = document.createElement("div");
+//     // checkBoxx = form2.createElement('input');
+//   form2.innerHTML =
+//     '<input type="checkbox" onclick="onClickCheckBox(this)" /> laoooo '
+
+//              form.appendChild(form2);
+             
+             
+            // // creating checkbox element
+            // var checkbox = document.createElement('input');
+             
+            // Assigning the attributes
+            // // to created checkbox
+            // checkbox.type = "checkbox";
+            // checkbox.name = "checkboxname";
+            // checkbox.value = "checkboxnames";
+            // checkbox.id = "checkboxname";
+            // checkbox.onclick = "onClickCheckBox(this)"
+
+            // checkbox.innerHTML = ""
+             
+            // // creating label for checkbox
+            // var label = document.createElement('label');
+             
+            // // assigning attributes for
+            // // the created label tag
+            // label.htmlFor = "id";
+             
+            // // appending the created text to
+            // // the created label tag
+            // label.appendChild(document.createTextNode('This is the label for checkbox.'));
+             
+            // // appending the checkbox
+            // // and label to div
+            // form.appendChild(checkbox);
+            // form.appendChild(label);
+
+            // if(checkbox.checked == true){
+            //     alert('inside checbox stratment')
+
+
+
+            // }
+
+                
+//     return true;
+// }
+
+// function onClickCheckBox(checkBox) {
+//     if (checkBox.checked == true) {
+//         alert("insidethechecboxfunction");
+
+//  };
+// }
+
+    // write a function submitted
+    function submitted(e) {
+        console.log('submit');
+        // To avoid page refresh
+        e.preventDefault();
+// && !isEmailInValid && !isPhoneNumberInValid
+        if (!isNameInValid) {
+            alert("Data entered successfully");
+            createTable();
+        }
+        else {
+            alert("Please enter valid details")
+        }
+    }
+
+    // Event Delegation
+    // https://javascript.info/event-delegation
+    document.myForm.addEventListener('input', validate);
+    document.myForm.addEventListener('submit', submitted);
+
+
+}
+
+function createTable(){
+    alert("tablebro");
+
+    const newtable = document.getElementById('container');
+    const tbl = document.createElement("table");
+  const tblBody = document.createElement("tbody");
+
+  // creating all cells
+  for (let i = 0; i < 2; i++) {
+    // creates a table row
+    const row = document.createElement("tr");
+
+    for (let j = 0; j < 2; j++) {
+      // Create a <td> element and a text node, make the text
+      // node the contents of the <td>, and put the <td> at
+      // the end of the table row
+      const cell = document.createElement("td");
+      const cellText = document.createTextNode(`cell in row ${elementName}, column ${j}`);
+      cell.appendChild(cellText);
+      row.appendChild(cell);
+    }
+
+    // add the row to the end of the table body
+    tblBody.appendChild(row);
+  }
+
+  // put the <tbody> in the <table>
+  tbl.appendChild(tblBody);
+  // appends <table> into <body>
+  newtable.appendChild(tbl);
+  // sets the border attribute of tbl to '2'
+  tbl.setAttribute("border", "2");
+
+    
+    // var newtable = document.getElementById('container');
+    // divs = document.createElement("div");
+    // divs.innerHTML = "dssdsd";
+    // newtable.appendChild(divs);
+
+//     tablebro = document.createElement('table');
+//     divs.appendChild(tablebro)
+// var tableheade = document.createElement('thead');
+// tablebro.appendChild(tableheade);
+//   var tableRow = document.createElement("tr");
+
+//   var tdCheckBoxNode = document.createElement("td");
+//   tdCheckBoxNode.innerHTML =
+//     '<input type="checkbox" /><br/><br/>';
+
+//   var tableDataStudent = document.createElement("td");
+//   tableDataStudent.innerHTML = "Student " ;
+
+//   var tableDataTeacher = document.createElement("td");
+//   tableDataTeacher.innerHTML = "Teacher " ;
+
+//   var tableDataStatus = document.createElement("td");
+//   tableDataStatus.innerHTML = "Approved";
+
+//   var tableDataTerm = document.createElement("td");
+//   tableDataTerm.innerHTML = "Fall";
+
+//   var tableDataType = document.createElement("td");
+//   tableDataType.innerHTML = "TA";
+
+//   var tableDataBudget = document.createElement("td");
+//   tableDataBudget.innerHTML = "12344";
+
+//   var tableDataPercentage = document.createElement("td");
+//   tableDataPercentage.innerHTML = "100%";
+
+
+//   var tableRow2 = document.createElement("tr");
+
+//   var tableDataTerm2 = document.createElement("td");
+//   tableDataTerm2.innerHTML = "Fall";
+
+//   var tableDataType2 = document.createElement("td");
+//   tableDataType2.innerHTML = "TA";
+
+//   var tableDataBudget2 = document.createElement("td");
+//   tableDataBudget2.innerHTML = "12344";
+
+//   var tableDataPercentage2 = document.createElement("td");
+//   tableDataPercentage2.innerHTML = "100%";
+
+  
+//   tableRow.appendChild(tdCheckBoxNode);
+//   tableRow.appendChild(tableDataStudent);
+
+//   tableRow.appendChild(tableDataTeacher);
+//   tableRow.appendChild(tableDataStatus);
+
+//   tableRow.appendChild(tableDataTerm);
+//   tableRow.appendChild(tableDataType);
+
+//   tableRow.appendChild(tableDataBudget);
+//   tableRow.appendChild(tableDataPercentage);
+
+//   tablebro.appendChild(tableRow);
+
+//   tableRow.appendChild(tableDataTerm2);
+//   tableRow.appendChild(tableDataType2);
+
+//   tableRow.appendChild(tableDataBudget2);
+//   tableRow.appendChild(tableDataPercentage2);
+
+//   tablebro.appendChild(tableRow2);
+// //   tablebro();
+}

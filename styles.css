@@ -8,8 +8,18 @@ label {
     margin: auto;
     background-color: beige;
 }
-
+#container2 {
+    width: 1000px;
+    margin: auto;
+    background-color: wheat;
+    padding: 100px;
+}
 main {
     padding: 50px;
 }
 
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+  }
