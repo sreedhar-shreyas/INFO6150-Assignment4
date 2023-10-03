@@ -4,6 +4,7 @@ document.getElementById("Reset").disabled = true;
 
   const form = document.getElementById("form");
   const regExName = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+  const regExAddr = /^[A-Za-z0-9'\.\-\s\,]/;
   const regExEmail =
     /^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(northeastern)\.edu$/;
   const regExPhone = /\d{3}-?\d{3}-\d{4}$/;
@@ -32,13 +33,16 @@ document.getElementById("Reset").disabled = true;
   isFeedbackClassInValid = true;
   isRefInValid = true;
   iscommentsInValid = true;
+
+  
   const validate = (event) => {
     console.log("input");
     const { id, value, name } = event.target;
 
     switch (id) {
       case "title":
-        if (!value) {
+        titles = document.querySelector('input[name="title"]:checked').value;
+        if (!titles) {
           display(name, true);
           isSalInvalid = true;
         } else {
@@ -82,7 +86,7 @@ document.getElementById("Reset").disabled = true;
         }
         break;
       case "streetAddrs1":
-        if (!value.trim().toLowerCase().match(regExName)) {
+        if (!value.trim().toLowerCase().match(regExAddr)) {
           display(name, true);
           isAddressInValid = true;
         } else {
@@ -91,7 +95,7 @@ document.getElementById("Reset").disabled = true;
         }
         break;
       case "streetAddrs2":
-        if (!value.trim().toLowerCase().match(regExName)) {
+        if (!value.trim().toLowerCase().match(regExAddr)) {
           display(name, true);
           isAddress2InValid = true;
         } else {
@@ -178,13 +182,16 @@ document.getElementById("Reset").disabled = true;
      
 
 
-      case "source":
-        if (!value) {
+      case "sources":
+        var srcs = document.getElementById('.sources:checked');
+     
+        if (!value === true) {
           display(name, true);
           isRefInValid = true;
         } else {
           display(name, false);
           isRefInValid = false;
+          console.log("hi"+src);
         }
         break;
       case "comments":
@@ -198,44 +205,13 @@ document.getElementById("Reset").disabled = true;
         break;
     }
     document.getElementById("Submit").disabled = false;
-    document.getElementById("Reset").disabled = false;
+    // document.getElementById("Reset").disabled = false;
 
   };
-  // write a function submitted
-  function submitted(e) {
-    console.log("submit");
-    // To avoid page refresh
-    e.preventDefault();
-    // && !isEmailInValid && !isPhoneNumberInValid
-    if (!isNameInValid) {
-      alert("Data entered successfully");
-      createTable();
-      document.getElementById("myForm").reset();
-      document.getElementById("container2").style.visibility="visible";
-      document.getElementById("Submit").disabled = true;
-      document.getElementById("Reset").disabled = true;
-    } else {
-      alert("Please enter valid details");
-    }
-  }
-  
-  function resetted(e) {
-    document.getElementById("myForm").reset();
-    var txtdisplay = document.getElementById("classes");
-    var txtfield = document.getElementById("thetextfield");
-
-    txtdisplay.style.visibility = "hidden";
-    txtfield.style.visibility = "hidden";
-  }
-  // Event Delegation
-  // https://javascript.info/event-delegation
-  document.myForm.addEventListener("input", validate);
-  document.myForm.addEventListener("submit", submitted);
-  document.myForm.addEventListener("reset", resetted);
 
   function createTable() {
-    alert("tablebro");
-    
+    // alert("tablebro");
+   
     var trx = document.querySelector('input[name="checkprof"]:checked').value;
     var sar = document.querySelector('input[name="title"]:checked').value;
     var sources = document.querySelector('input[name="source"]:checked').value;
@@ -318,11 +294,53 @@ document.getElementById("Reset").disabled = true;
 
     n++;
     x++;
+  };
+  // write a function submitted
+  function submitted(e) {
+    console.log("submit");
+    // To avoid page refresh
+    e.preventDefault();
+    // && !isEmailInValid && !isPhoneNumberInValid
+    if (!isNameInValid &&
+         !isEmailInValid && !isPhoneNumberInValid && !isAddressInValid &&
+      !isAptnoInValid && !isZipCodeInValid && !isFeedbackClassInValid &&
+    //    !isRefInValid &&
+    !iscommentsInValid 
+    ){
+      alert("Data entered successfully");
+      createTable();
+      document.getElementById("myForm").reset();
+      document.getElementById("container2").style.visibility="visible";
+      document.getElementById("Submit").disabled = true;
+      document.getElementById("Reset").disabled = true;
+    } else {
+      alert("Please enter all the details");
+      if(!isEmailInValid){
+        document.getElementById("emailId").focus();
+      }
+      
+    }
   }
+  
+  function resetted(e) {
+    document.getElementById("myForm").reset();
+    var txtdisplay = document.getElementById("classes");
+    var txtfield = document.getElementById("thetextfield");
+
+    txtdisplay.style.visibility = "hidden";
+    txtfield.style.visibility = "hidden";
+  }
+  // Event Delegation
+  // https://javascript.info/event-delegation
+  document.myForm.addEventListener("input", validate);
+  document.myForm.addEventListener("submit", submitted);
+  document.myForm.addEventListener("reset", resetted);
+
+  
 };
 
 function onPresscheckbox(checkbox) {
-  alert("insite checkbox");
+  console.log("insite checkbox");
   var text = document.getElementById("thetextfield");
   if (checkbox.checked == true) {
     text.style.visibility = "visible";
@@ -330,3 +348,13 @@ function onPresscheckbox(checkbox) {
     text.style.visibility = "hidden";
   }
 }
+// function submitbtn(){
+//     if (!isNameInValid &&
+//         !isEmailInValid && !isPhoneNumberInValid && !isAddressInValid &&
+//      !isAptnoInValid && !isZipCodeInValid && !isFeedbackClassInValid &&
+//    //    !isRefInValid &&
+//    !iscommentsInValid 
+//    )
+// }
+
+

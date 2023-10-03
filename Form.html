@@ -10,7 +10,7 @@
 <body>
 	<div id="container">
 		<main>
-			<h2>Feedback</h2>
+			<h2>Feedback - add everyuthing to valid befire submitting </h2>
 			<h3>Love something? Hate something? Let us know!</h3>
 			Note : Fields marked with an asterisk(*) are mandatory
 			<br /><br />
@@ -55,7 +55,7 @@
 				<div class="validateform">
 					<label for="phoneNumber">Phone Number*:</label>
 					<input type="text" name="phoneNumber" id="phoneNumber" placeholder="xxx-xxx-xxxx" minlength="13"
-						maxlength="13" />
+						maxlength="13"  />
 					<br />
 					<div id="error_phoneNumber" style="display: none; color: red">
 						Invalid Phone No, Please enter valid Phone No.
@@ -68,25 +68,25 @@
 					<!-- <div class="forwidth"> -->
 				
 						<input type="text" name="streetAddrs1" id="streetAddrs1" placeholder="Street Address 1"
-							minlength="1" maxlength="40" />
+							minlength="1" maxlength="40"  />
 						<br />
-						<div class="error_streetAddrs1" style="display: none; color: red">
-							Invalid Adress No, Please enter valid
+						<div id="error_streetAddrs1" style="display: none; color: red;">
+							Invalid characters in Address, Please enter valid address 
 						</div>
 						<br />
 						<label for="Address">Street Address Line 2:</label>
 						<input type="text" name="streetAddrs2" id="streetAddrs2" placeholder="Street Address 2"
-							minlength="1" maxlength="40" />
+							minlength="1" maxlength="40"/>
 						<br />
 				
-						<div class="error_streetAddrs2" style="display: none; color: red">
-							Invalid Apt No, Please enter valid
+						<div id="error_streetAddrs2" style="display: none; color: red;">
+							Invalid characters in Address, Please check or leave blank;
 						</div>
 						<br />
 						<label for="aptNum">Apt No*:</label>
 
 						<input type="text" name="aptNum" id="aptNum" placeholder="Apt Number" minlength="1"
-							maxlength="40" />
+							maxlength="40"  />
 						<br />
 						<div id="error_aptNum" style="display: none; color: red">
 							Invalid Apt No, Please enter valid Apt No.
@@ -147,12 +147,12 @@
 					<div class="validateform">
 						<label for="refferalsource">How did you hear us?*:</label>
 						<div class="checkboxes">
-							<input type="checkbox" name="source" value="facebook" />
+							<input type="radio" name="sources" id="sources"  value="facebook" />
 							Facebook
-							<input type="checkbox" name="source" value="google" /> Google
-							<input type="checkbox" name="source" value="yelp" /> Yelp
+							<input type="radio" name="sources" id="sources"  value="google" /> Google
+							<input type="radio" name="sources" id="sources" value="yelp" /> Yelp
 							<br />
-							<div id="error_checkbox" style="display: none; color: red">
+							<div id="error_sources" style="display: none; color: red">
 								Invalid. Please Choose one. 
 							</div>
 							<br />
