@@ -92,6 +92,25 @@
 							Invalid Apt No, Please enter valid Apt No.
 						</div>
 						<br />
+						<br />
+						<label for="city">City *:</label>
+
+						<input type="text" name="city" id="city" placeholder="City Name" minlength="1"
+							maxlength="40"  />
+						<br />
+						<div id="error_city" style="display: none; color: red">
+							Invalid City Name, Please enter valid city Name.
+						</div>
+						<br />
+						<label for="city">State *:</label>
+
+						<input type="text" name="state" id="state" placeholder="state Name" minlength="1"
+							maxlength="40"  />
+						<br />
+						<div id="error_state" style="display: none; color: red">
+							Invalid State Name, Please enter valid State name.
+						</div>
+						<br />
 					<!-- </div> -->
 				</div>
 				<div class="validateform">
@@ -122,13 +141,13 @@
 					
 						<input type="checkbox" name="checkprof" id="checkprof1" value="Prof 1" onclick="onPresscheckbox()" style="visibility: hidden;"/> Prof 1
 
-						<!-- <input type="checkbox" name="checkprof" id="checkprof2" value="Prof 2" onclick="onPresscheckbox()" style="display: none;"/> Prof 2
+						 <input type="checkbox" name="checkprof" id="checkprof2" value="Prof 2" onclick="onPresscheckbox()" style="display: none;"/> Prof 2
 
 						<input type="checkbox" name="checkprof" id="checkprof3" value="Prof 3" onclick="onPresscheckbox()" style="display: none;"/> Prof 3
 
 						<input type="checkbox" name="checkprof" id="checkprof4" value="Prof 4" onclick="onPresscheckbox()" style="display: none;"/> Prof 4
 
-						<input type="checkbox" name="checkprof" id="checkprof5" value="Prof 5" onclick="onPresscheckbox()" style="display: none;"/> Prof 5 -->
+						<input type="checkbox" name="checkprof" id="checkprof5" value="Prof 5" onclick="onPresscheckbox()" style="display: none;"/> Prof 5 
 						<!-- <input type="checkbox" name="checkprof" id="checkprof2" value="Prof 2" onclick="onPresscheckbox()"/>
 						<label for="checkprof2"> Prof 2</label><br> -->
 						
@@ -147,10 +166,10 @@
 					<div class="validateform">
 						<label for="refferalsource">How did you hear us?*:</label>
 						<div class="checkboxes">
-							<input type="radio" name="sources" id="sources"  value="facebook" />
+							<input type="checkbox" name="sources" id="sources"  value="facebook" />
 							Facebook
-							<input type="radio" name="sources" id="sources"  value="google" /> Google
-							<input type="radio" name="sources" id="sources" value="yelp" /> Yelp
+							<input type="checkbox" name="sources" id="sources"  value="google" /> Google
+							<input type="checkbox" name="sources" id="sources" value="yelp" /> Yelp
 							<br />
 							<div id="error_sources" style="display: none; color: red">
 								Invalid. Please Choose one. 
@@ -195,7 +214,9 @@
 		  <th>Address 1</th>
 		  <th>Address 2</th> 
 		  <th>Apt No.</th>
-		  <th>Zip Code</th>
+		  <th>Zip code</th>
+		  <th>City</th>
+		  <th>State</th>
 		  <th>Class</th> 
 		  <th>Professor Name</th>
 		  <th>Feedback</th>

@@ -1,13 +1,13 @@
 window.onload = () => {
-document.getElementById("Submit").disabled = true;
-document.getElementById("Reset").disabled = true;
+  document.getElementById("Submit").disabled = true;
+  document.getElementById("Reset").disabled = true;
 
   const form = document.getElementById("form");
   const regExName = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
   const regExAddr = /^[A-Za-z0-9'\.\-\s\,]/;
   const regExEmail =
     /^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(northeastern)\.edu$/;
-  const regExPhone = /\d{3}-?\d{3}-\d{4}$/;
+  const regExPhone = /^\d{3}\d{3}\d{4}$/;
   const regExAptNo = /^\d+$/;
 
   const display = (elementName, isInValid) => {
@@ -23,9 +23,11 @@ document.getElementById("Reset").disabled = true;
   };
 
   let isSalInvalid = true,
-    isNameInValid = true,
-    isEmailInValid = true,
-    isPhoneNumberInValid = true;
+  isstateInValid = true,
+  iscityInValid = true,
+  isNameInValid = true,
+  isEmailInValid = true,
+  isPhoneNumberInValid = true;
   isAddressInValid = true;
   isAddress2InValid = true;
   isAptnoInValid = true;
@@ -34,12 +36,13 @@ document.getElementById("Reset").disabled = true;
   isRefInValid = true;
   iscommentsInValid = true;
 
-  
   const validate = (event) => {
+    var count = 
     console.log("input");
     const { id, value, name } = event.target;
 
     switch (id) {
+      
       case "title":
         titles = document.querySelector('input[name="title"]:checked').value;
         if (!titles) {
@@ -49,6 +52,7 @@ document.getElementById("Reset").disabled = true;
           display(name, false);
           isSalInvalid = false;
         }
+        break;
       case "fname":
         if (!value.trim().toLowerCase().match(regExName)) {
           display(name, true);
@@ -137,7 +141,7 @@ document.getElementById("Reset").disabled = true;
 
           if (strUser1 == "INFO 5100") {
             alert("INFO 5100 SELECTED");
-            
+
             txtdisplay.style.visibility = "visible";
             var cl1 = document.getElementById("classes");
             cl1.innerHTML =
@@ -176,22 +180,19 @@ document.getElementById("Reset").disabled = true;
               '<input type="checkbox" name="checkprof" id="checkprof5" value="Prof 5" onclick="onPresscheckbox(this)" style="display: inline;"/>Prof 5';
           }
         }
-        
-       
-        break;
-     
 
+      break;
 
       case "sources":
-        var srcs = document.getElementById('.sources:checked');
-     
-        if (!value === true) {
+        var srcs = document.querySelector('input[name="sources"]:checked').value;
+console.log(srcs);
+        if (!srcs) {
           display(name, true);
           isRefInValid = true;
         } else {
           display(name, false);
           isRefInValid = false;
-          console.log("hi"+src);
+          console.log("hi" + srcs);
         }
         break;
       case "comments":
@@ -201,20 +202,42 @@ document.getElementById("Reset").disabled = true;
         } else {
           display(name, false);
           iscommentsInValid = false;
+          document.getElementById("Submit").disabled = false;
+
         }
         break;
-    }
-    document.getElementById("Submit").disabled = false;
-    // document.getElementById("Reset").disabled = false;
+      case "city":
+        if (!value.trim().toLowerCase().match(regExName)) {
+          display(name, true);
+          iscityInValid = true;
+        } else {
+          display(name, false);
+          iscityInValid = false;
+        }
+        break;
 
+      case "state":
+        if (!value.trim().toLowerCase().match(regExName)) {
+          display(name, true);
+          isstateInValid = true;
+        } else {
+          display(name, false);
+          isstateInValid = false;
+        }
+
+        break;
+    }
+
+    // document.getElementById("Submit").disabled = false;
+    document.getElementById("Reset").disabled = false;
   };
 
   function createTable() {
     // alert("tablebro");
-   
+
     var trx = document.querySelector('input[name="checkprof"]:checked').value;
     var sar = document.querySelector('input[name="title"]:checked').value;
-    var sources = document.querySelector('input[name="source"]:checked').value;
+    var sources = document.querySelector('input[name="sources"]:checked').value;
     var tblfname = document.getElementById("fname").value;
     var tbllname = document.getElementById("lname").value;
     var tblfullname = tblfname + " " + tbllname;
@@ -232,6 +255,9 @@ document.getElementById("Reset").disabled = true;
     var list11 = [];
     var list12 = [];
     var list13 = [];
+    var list14 = [];
+    var list15 = [];
+
 
     var n = 1;
     var x = 0;
@@ -257,12 +283,16 @@ document.getElementById("Reset").disabled = true;
     list5[x] = document.getElementById("streetAddrs1").value;
     list6[x] = document.getElementById("streetAddrs2").value;
     list7[x] = document.getElementById("aptNum").value;
+    // list14[x] = document.getElementById("city").value;
+    // list15[x] = document.getElementById("state").value;
     list8[x] = document.getElementById("zipcode").value;
     list9[x] = document.getElementById("classFeedback").value;
     list10[x] = document.getElementById("proftext").value;
     list11[x] = trx;
     list12[x] = sources;
     list13[x] = document.getElementById("comments").value;
+    list14[x] = document.getElementById("city").value;
+    list15[x] = document.getElementById("state").value;
 
     var cel0 = NewRow.insertCell(0);
     var cel1 = NewRow.insertCell(1);
@@ -272,11 +302,14 @@ document.getElementById("Reset").disabled = true;
     var cel5 = NewRow.insertCell(5);
     var cel6 = NewRow.insertCell(6);
     var cel7 = NewRow.insertCell(7);
+
     var cel8 = NewRow.insertCell(8);
     var cel9 = NewRow.insertCell(9);
     var cel10 = NewRow.insertCell(10);
     var cel11 = NewRow.insertCell(11);
     var cel12 = NewRow.insertCell(12);
+    var cel13 = NewRow.insertCell(13);
+    var cel14 = NewRow.insertCell(14);
 
     cel0.innerHTML = list1[x];
     cel1.innerHTML = list2[x];
@@ -286,42 +319,53 @@ document.getElementById("Reset").disabled = true;
     cel5.innerHTML = list6[x];
     cel6.innerHTML = list7[x];
     cel7.innerHTML = list8[x];
-    cel8.innerHTML = list9[x];
-    cel9.innerHTML = list11[x];
-    cel10.innerHTML = list10[x];
-    cel11.innerHTML = list12[x];
-    cel12.innerHTML = list13[x];
+
+    cel8.innerHTML = list14[x];
+    cel9.innerHTML = list15[x];
+    cel10.innerHTML = list9[x];
+    cel11.innerHTML = list10[x];
+    cel12.innerHTML = list11[x];
+    cel13.innerHTML = list12[x];
+    cel14.innerHTML = list13[x];
 
     n++;
     x++;
-  };
+  }
   // write a function submitted
   function submitted(e) {
-    console.log("submit");
+    console.log("submitted loop");
     // To avoid page refresh
     e.preventDefault();
     // && !isEmailInValid && !isPhoneNumberInValid
-    if (!isNameInValid &&
-         !isEmailInValid && !isPhoneNumberInValid && !isAddressInValid &&
-      !isAptnoInValid && !isZipCodeInValid && !isFeedbackClassInValid &&
-    //    !isRefInValid &&
-    !iscommentsInValid 
-    ){
+    if (
+      // !isSalInvalid &&
+      !isNameInValid &&
+      !isEmailInValid &&
+      !isPhoneNumberInValid &&
+      !isAddressInValid &&
+      !isAptnoInValid &&
+      !isZipCodeInValid &&
+      // !isFeedbackClassInValid &&
+      // //    !isRefInValid &&
+      !iscommentsInValid
+    ) {
       alert("Data entered successfully");
+      // document.getElementById("Submit").disabled = false;
+
       createTable();
+      console.log(myForm);
       document.getElementById("myForm").reset();
-      document.getElementById("container2").style.visibility="visible";
+      document.getElementById("container2").style.visibility = "visible";
       document.getElementById("Submit").disabled = true;
       document.getElementById("Reset").disabled = true;
     } else {
       alert("Please enter all the details");
-      if(!isEmailInValid){
+      if (!isEmailInValid) {
         document.getElementById("emailId").focus();
       }
-      
     }
   }
-  
+
   function resetted(e) {
     document.getElementById("myForm").reset();
     var txtdisplay = document.getElementById("classes");
@@ -335,8 +379,6 @@ document.getElementById("Reset").disabled = true;
   document.myForm.addEventListener("input", validate);
   document.myForm.addEventListener("submit", submitted);
   document.myForm.addEventListener("reset", resetted);
-
-  
 };
 
 function onPresscheckbox(checkbox) {
@@ -353,8 +395,6 @@ function onPresscheckbox(checkbox) {
 //         !isEmailInValid && !isPhoneNumberInValid && !isAddressInValid &&
 //      !isAptnoInValid && !isZipCodeInValid && !isFeedbackClassInValid &&
 //    //    !isRefInValid &&
-//    !iscommentsInValid 
+//    !iscommentsInValid
 //    )
 // }
-
-
